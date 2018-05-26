@@ -1,4 +1,5 @@
 <template>
+  <div class="time">
 <div id = "title">时空隧道</div>
 <div id = "introduce">
     <p>一段心声+目标邮箱+未来某个日期+随意昵称=时空之匙</p>
@@ -37,11 +38,11 @@
 </div>
 <button  type="button" id = "decide">提交</button>
 <div id = "muxi">Powered_by_木犀团队</div>
-
-
+  </div>
 </template>
 <script>
 export default {
+    name: 'time',
     data() {
         return {
             value1: '',

@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class = "control">
     <el-date-picker
       v-model="value1"
       type="date"
@@ -64,6 +64,7 @@
 
 <script>
 export default {
+   name: 'control',
    methods: {
       handleEdit(index, row){
         console.log(index, row);
