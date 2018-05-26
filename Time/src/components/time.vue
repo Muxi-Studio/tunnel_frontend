@@ -5,8 +5,8 @@
     <p>给自己一个期冀，一次机会，一份勇气</p>
     <p>你想对未来的我或TA说什么？</p>
 </div>
-<div id = "send">
-    <div>发送时间</div>
+<div>
+    <div id = "send">发送时间</div>
     <div id = "choicetime">
     <el-date-picker
       v-model="value1"
@@ -15,20 +15,22 @@
     </el-date-picker>
     </div>
 </div>
-<div id = "send">
-    <div>我要发给</div>
+<div>
+    <div id = "send">我要发给</div>
     <input type="text" id = "email"/>
 </div>
-<div id = "send">
-    <div>想说的话</div>
-    <div id = "content">内容要求：
+<div>
+    <div id = "send">想说的话</div>
+    <div id = "content">
+        <p>内容要求：</p>
         <p>(1)对侮辱性、诽谤性、违反国家规定等言论零容忍</p>
         <p>(2)温馨提示：真的会定时发送，望三思后码字</p>
     </div>
     <input type="text" id = "words" />
 </div>
-<div id = "send">
-    <div>昵称
+<div>
+    <div id = "send">昵称</div>
+    <div id = "content">
         <p>可以在这儿备注上自己的名字或者昵称</p>
     </div>
     <input type="text" id = "ID" />
@@ -63,18 +65,21 @@ export default {
     margin-top: 190px;
 }
 #send{
-    margin: 0 auto;
     font-size: 32px;
     color: white;
     margin: 0 auto;
-    margin-top: px;
+    margin-top: 35px;
 }
 #choicetime{
     width: 78%;
     height: 88px;
 }
 #content{
-
+    font-size: 26px;
+    font-family: "Adobe Heiti Std";
+    color: rgb(174, 169, 205);
+    line-height: 1.385;
+    text-align: left;
 }
 #email{
     width: 78%;
@@ -96,11 +101,14 @@ export default {
     height: 88px;
     line-height: 1.2;
     text-align: center;
+    margin-top: 50px;
+
 }
 #muxi{
     font-size: 32px;
     font-family: "SimHei";
     color: rgb(255, 255, 255);
     line-height: 1.2;
+    margin-top: 55px;
 }
 </style>

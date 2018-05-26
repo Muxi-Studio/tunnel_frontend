@@ -5,14 +5,16 @@ import { DatePicker, Table } from 'element-ui';
 import App from './App'
 
 // Vue.config.productionTip = false
-Vue.prototype.$ELEMENT = { size: 'small' };
-Vue.component(DatePicker.name, DatePicker);
-Vue.component(Table.name, Table);
+// Vue.prototype.$ELEMENT = { size: 'small' };
+Vue.use(DatePicker)
+Vue.use(Table)
+// Vue.component(DatePicker.name, DatePicker);
+// Vue.component(Table.name, Table);
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  // components: { App },
+  components: { App },
   render: h => h(App)
   // template: '<App/>'
 })
