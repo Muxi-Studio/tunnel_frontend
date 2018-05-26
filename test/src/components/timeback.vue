@@ -1,5 +1,5 @@
 <template>
-  <div id="time">
+  <div id="timeback">
       <div id = "picture">
         <img src = "../assets/插画.png" id = "inset">
       </div>
@@ -13,13 +13,15 @@
 </div>
 <div id = "SendTo">
     <div id = "send">发送时间</div>
-    <div id = "choicetime">
-    <el-date-picker
+<div id="wrap">
+      <el-date-picker
       v-model="value1"
       type="date"
-      placeholder="选择日期">
+      placeholder="选择日期"
+      style="width: 100%;">
     </el-date-picker>
-    </div>
+</div>
+
     <div id = "send">我要发给</div>
     <input type="text" id = "email"/>
     <div id = "send">想说的话</div>
@@ -46,7 +48,7 @@ export default {
     name: 'time',
     data() {
         return {
-            value1: '',
+            value1: ''
         };
     }
 };
@@ -55,7 +57,7 @@ export default {
 input{
     border-radius:10px;
 }
-#time{
+#timeback{
     background-image: url(../assets/background.png);
     background-repeat: no-repeat;
     background-position: top center;
@@ -81,6 +83,9 @@ div{
     font-size: 20px;
     margin-top: 100px;
 }
+#wrap{
+    margin-top: 20px;
+}
 #SendTo{
     padding: 0 13% 0 13%;
 }
@@ -89,12 +94,6 @@ div{
     color: white;
     margin-top: 35px;
 }
-
-#choicetime{
-    width: 78%;
-    height: 88px;
-}
-
 #content{
     font-size: 23px;
     font-family: "Adobe Heiti Std";
@@ -104,7 +103,7 @@ div{
 #email{
     margin-top: 20px;
     width: 100%;
-    height: 88px;
+    height: 36px;
 }
 #words{
     margin-top: 20px;
@@ -114,7 +113,7 @@ div{
 
 #ID{
     width: 100%;
-    height: 88px;
+    height: 36px;
 }
 #up{
     text-align: center;
@@ -124,7 +123,7 @@ div{
     background-color: #90dbdc;
     color: rgb(255, 255, 255);    
     width: 25%;
-    height: 68px;
+    height: 58px;
     font-size: 24px;
     line-height: 1.2;
     text-align: center;

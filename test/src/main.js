@@ -4,10 +4,13 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import { DatePicker, Table } from 'element-ui';
-// import 'element-ui/lib/theme-chalk/index.css';
+// import ElDatePicker from 'element-datepicker'
+
+// Vue.use(ElDatePicker);
+Vue.use(DatePicker);
+Vue.use(Table);
 
 
-Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 new Vue({

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 // import HelloWorld from '@/components/HelloWorld'
-import time from '@/components/time'
+import timeback from '@/components/timeback'
 // import control from '@/components/control'
 
 
@@ -12,8 +12,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'time',
-      component: time
+      name: 'timeback',
+      component: timeback
     }
   ]
 })
