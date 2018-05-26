@@ -1,12 +1,17 @@
 <template>
-  <div class="time">
-<div id = "title">时空隧道</div>
+  <div id="time">
+      <div id = "picture">
+        <img src = "../assets/插画.png" id = "inset">
+      </div>
 <div id = "introduce">
-    <p>一段心声+目标邮箱+未来某个日期+随意昵称=时空之匙</p>
+    <!-- <p>一段心声+目标邮箱+未来某个日期+随意昵称=时空之匙</p>
     <p>给自己一个期冀，一次机会，一份勇气</p>
-    <p>你想对未来的我或TA说什么？</p>
+    <p>你想对未来的我或TA说什么？</p> -->
+    <p>与过去的自己不期而遇 聆听来自光阴彼端的声音</p>
+    <p>在这里写下你对自己或TA的心绪或期许</p>
+    <p>我将在时光的那头 说给你听</p>
 </div>
-<div>
+<div id = "SendTo">
     <div id = "send">发送时间</div>
     <div id = "choicetime">
     <el-date-picker
@@ -15,12 +20,8 @@
       placeholder="选择日期">
     </el-date-picker>
     </div>
-</div>
-<div>
     <div id = "send">我要发给</div>
     <input type="text" id = "email"/>
-</div>
-<div>
     <div id = "send">想说的话</div>
     <div id = "content">
         <p>内容要求：</p>
@@ -28,16 +29,16 @@
         <p>(2)温馨提示：真的会定时发送，望三思后码字</p>
     </div>
     <input type="text" id = "words" />
-</div>
-<div>
     <div id = "send">昵称</div>
     <div id = "content">
         <p>可以在这儿备注上自己的名字或者昵称</p>
     </div>
     <input type="text" id = "ID" />
 </div>
+<div id = "up">
 <button  type="button" id = "decide">提交</button>
-<div id = "muxi">Powered_by_木犀团队</div>
+</div>
+<div id = "muxi">Powered by 木犀团队</div>
   </div>
 </template>
 <script>
@@ -51,62 +52,88 @@ export default {
 };
 </script>
 <style scoped>
-#title{
-    margin: 0 auto;
-    width: 42%;
-    height: 65px;
-    margin-top: 120px;
-    font-size: 40px;
-    color:#90dbdc;
+input{
+    border-radius:10px;
+}
+#time{
+    background-image: url(../assets/background.png);
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: 100% 100%;
+    padding: 120px 0;
+}
+body{
+    line-height: 1.2;
+}
+#picture{
+    text-align: center;
+}
+#inset{
+    width: 40%;
+}
+div{
+    display: block;
 }
 #introduce{
-    margin: 0 auto;
+    font-family: "Adobe Heiti Std";
+    text-align: center;
     color: white;
-    font-size: 26px;
-    margin-top: 190px;
+    font-size: 20px;
+    margin-top: 100px;
+}
+#SendTo{
+    padding: 0 13% 0 13%;
 }
 #send{
-    font-size: 32px;
+    font-size: 28px;
     color: white;
-    margin: 0 auto;
     margin-top: 35px;
 }
+
 #choicetime{
     width: 78%;
     height: 88px;
 }
+
 #content{
-    font-size: 26px;
+    font-size: 23px;
     font-family: "Adobe Heiti Std";
     color: rgb(174, 169, 205);
     line-height: 1.385;
-    text-align: left;
 }
 #email{
-    width: 78%;
+    margin-top: 20px;
+    width: 100%;
     height: 88px;
 }
 #words{
-    width: 78%;
+    margin-top: 20px;
+    width: 100%;
     height: 322px;
 }
+
 #ID{
-    width: 78%;
+    width: 100%;
     height: 88px;
 }
-#button{
+#up{
+    text-align: center;
+}
+#decide{
     border-radius: 12px;
-    background-color: rgba(0, 0, 0, 0);
+    background-color: #90dbdc;
     color: rgb(255, 255, 255);    
-    width: 260px;
-    height: 88px;
+    width: 25%;
+    height: 68px;
+    font-size: 24px;
     line-height: 1.2;
     text-align: center;
     margin-top: 50px;
 
 }
 #muxi{
-    font-size: 32px;
+    text-align: center;
+    font-size: 20px;
     font-family: "SimHei";
     color: rgb(255, 255, 255);
     line-height: 1.2;
