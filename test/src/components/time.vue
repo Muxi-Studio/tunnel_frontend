@@ -54,20 +54,18 @@ export default {
         };
     },
     mounted(){
-        fetch("http://120.79.254.77:5000/api/signin/",{
-            method: 'POST',
-            body: JSON.stringify({"username": "TStunnel","password": "Ilovemuxi"}),
-            headers: {
-                "Content-Type": "application/json"
-            }
+        // fetch("/api/signin/",{
+        //     method: 'POST',
+        //     body: JSON.stringify({"username": "TStunnel","password": "Ilovemuxi"}),
+        //     headers: {
+        //         "Content-Type": "application/json"
+        //     }
             
-        }).then(res => {
-            if(res.ok){
-                return res.json();
-            }
-        }).then(res =>{
-            this.token = res.token;
-        })
+        // }).then(res => {
+        //     if(res.ok){
+        //         return res.json();
+        //     }
+        // })
 
     },
     methods: {
@@ -76,7 +74,7 @@ export default {
                 "sent_content": this.sent_content,
                 "sent_time": "123",
                 "sent_name": this.sent_name,
-                "sent_address": this.sent_name
+                "sent_address": this.sent_address,
             };
             fetch("/api/message/",{
                 method: 'POST',
@@ -92,6 +90,7 @@ export default {
                     // console.log("x");
                     this.failed = true;
                 }
+                // console.log(res);
             }).then(value =>{
                 //
             })
