@@ -4,12 +4,9 @@
         <img src = "../assets/插画.png" id = "inset">
       </div>
 <div id = "introduce">
-    <!-- <p>一段心声+目标邮箱+未来某个日期+随意昵称=时空之匙</p>
+    <p>一段心声+目标邮箱+未来某个日期+随意昵称=时空之匙</p>
     <p>给自己一个期冀，一次机会，一份勇气</p>
-    <p>你想对未来的我或TA说什么？</p> -->
-    <p>与过去的自己不期而遇 聆听来自光阴彼端的声音</p>
-    <p>在这里写下你对自己或TA的心绪或期许</p>
-    <p>我将在时光的那头 说给你听</p>
+    <p>你想对未来的我或TA说什么？</p>
 </div>
 <div id = "SendTo">
     <div id = "send">发送时间</div>
@@ -56,7 +53,7 @@ export default {
         };
     },
     mounted(){
-        fetch("http://120.79.254.77:5000/api/signin/",{
+        fetch("/api/signin/",{
             method: 'POST',
             body: JSON.stringify({"username": "TStunnel","password": "Ilovemuxi"}),
             headers: {
@@ -76,9 +73,9 @@ export default {
         sent(){
             var message = {
                 "sent_content": this.sent_content,
-                "sent_time": "123",
+                "sent_time": this.sent_time,
                 "sent_name": this.sent_name,
-                "sent_address": this.sent_name
+                "sent_address": this.sent_address
             };
             fetch("/api/message/",{
                 method: 'POST',

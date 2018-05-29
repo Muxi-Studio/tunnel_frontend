@@ -1,45 +1,38 @@
 <template>
 <div>
-<el-form :inline="true" class="demo-form-inline">   
    <el-date-picker      
       v-model="value1"
       type="date"
       placeholder="选择日期">
     </el-date-picker>
-    <el-form-item>
-    <el-button 
-    type="primary"
-    @click="filterHandler(scope.$index)">查询</el-button>
-     <el-button
-     @click="">重置</el-button>
-  </el-form-item>
-  </el-form>
-  <el-button>批量发送</el-button>
-  <el-button
-  type="danger"
-  @click.native.prevent="deleteRowAll()">批量删除</el-button>
- </div>
- <el-table 
- :data="tableData" 
- style="width: 100%" 
- tooltip-effect="dark"
- @selection-change="handleSelectionChange"  ref="multipleTable">
-   <el-table-column
-      type="selection"
-      width="55">
+      <el-button type="primary" @click = "filterHandler(scope.$index)">查询</el-button>
+      <el-button >重置</el-button>
+      <div class = "ChoiceAll">
+        <el-button>批量发送</el-button>
+        <el-button type="danger" @click = "delGroup" :disabled = "this.sels.length === 0">批量删除</el-button>
+      </div>
+    <el-table 
+    :data="tableData" 
+    style="width: 100%" 
+    tooltip-effect="dark"
+    @selection-change="handleSelectionChange"  
+    ref="multipleTable">
+    <el-table-column
+    type="selection"
+    width="55">
     </el-table-column>
     <el-table-column
         prop="date"
         label="日期"
         sortable
         width="180"
-      >
-      </el-table-column>
-      <el-table-column
+    >
+    </el-table-column>
+    <el-table-column
         prop="id"
         label="ID"
         width="180">
-        <template slot-scope="scope">
+      <div slot-scope="scope">
         <el-popover trigger="hover" placement="top">
           <p>昵称: {{ scope.row.id }}</p>
           <p>想说的话: {{ scope.row.words }}</p>
@@ -47,38 +40,40 @@
             <el-tag size="medium">{{ scope.row.id }}</el-tag>
           </div>
         </el-popover>
-      </template>
+      </div>
       </el-table-column>
       <el-table-column
         prop="time"
         label="发送时间"
-        width="180">
+        width="220">
       </el-table-column>
       <el-table-column
         prop="e-mail"
         label="发送地址"
-        width="180">
+        width="300">
       </el-table-column>
       <el-table-column
         prop="status"
         label="状态">
       </el-table-column>
     <el-table-column label="操作">
-      <template slot-scope="scope">
-        <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">发送</el-button>
-        <el-button size="mini" type="danger" @click.native.prevent="deleteRow(scope.$index, tableData)" type="text">删除</el-button>
-      </template>
+      <div slot-scope="scope">
+        <el-button @click = "handleEdit(scope.$index, scope.row)">发送</el-button>
+        <el-button type="danger" @click.native.prevent = "deleteRow(scope.$index, tableData)">删除</el-button>
+      </div>
     </el-table-column>
-  </el-table> 
+  </el-table>
   <div class="block" style="width: 100%;">
     <el-pagination
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
-      layout="total, prev, pager, next, jumper"
-      :page-size="25"
-      :total="100">
+      layout = "total, prev, pager, next, jumper"
+      :page-size = "25"
+      :total = "100">
     </el-pagination>
   </div>
+</div>
+
 </template>
 
 <script>
@@ -87,25 +82,67 @@ export default {
    data() {
       return {
          value1: '',
-         tableData: [{
-          date: '2016-05-02',
-          id: '王小虎',
-          status:'已发送'
-        }, {
-          date: '2016-05-04',
-          id: '王小虎',
-          status:'已发送'
-        }, {
-          date: '2016-05-01',
-          id: '王小虎',
-          status:'未发送'
-        }, {
-          date: '2016-05-03',
-          id: '王小虎',
-          status:'已发送'
-        }],
+         tableData: [],
         multipleSelection: []
       }
+    },
+    mounted(){
+        fetch("/api/signin/",{
+            method: 'POST',
+            body: JSON.stringify({"username": "TStunnel","password": "Ilovemuxi"}),
+            headers: {
+                "Content-Type": "application/json"
+            }
+            
+        }).then(res => {
+            if(res.ok){
+                return res.json();
+            }
+        }).then(res =>{
+            this.token = res.token;
+        })
+
+        fetch("/api/admin/pages/"+this.page+"/",{
+          method: 'GET',
+          headers:{
+            "token": this.token,
+            "Content-Type": "application/json"
+          }
+        }).then(res => {
+          if(res.ok){
+            return res.json();
+          }
+        }).then(res => {
+          this.tableData = res.messagelist;
+        })
+
+        fetch("/api/admin/pages/"+this.page+"/time"+this.time+"/",{
+          method: 'GET',
+          headers:{
+            "token": this.token,
+            "Content-Type": "application/json"
+          }
+        }).then(res => {
+          if(res.ok){
+            return res.json();
+          }
+        }).then(res => {
+          this.tableData = res.messagelist;
+        })
+        
+        fetch("/api/admin/pages/"+this.page+"/time"+this.time+"/",{
+          method: 'POST',
+          headers:{
+            "token": this.token,
+            "Content-Type": "application/json"
+          }
+        }).then(res => {
+          if(res.ok){
+            return res.json();
+          }
+        }).then(res => {
+          this.tableData = res.messagelist;
+        })
     },
     methods: {
       handleEdit(index, row) {
@@ -134,6 +171,12 @@ export default {
       handleSelectionChange(val) {
         this.multipleSelection = val;
       }
-    }
+    } 
   };
 </script>
+
+<style scoped>
+.ChoiceAll{
+  margin-top: 30px;
+}
+</style>
