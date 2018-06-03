@@ -82,6 +82,10 @@
             "token": this.token,
             "Content-Type": "application/json"
           }
+        }).then(res => {
+          if(res.ok) {
+            this.handleCurrentChange(this.page)
+          }
         })
       },
       filterHandler(time) {
