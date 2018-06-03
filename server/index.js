@@ -13,12 +13,12 @@ const templateRoot = path.join(__dirname, "../dist/");
 app.use(userAgent);
 app.use(bodyParser());
 
-// router.get(/^\/static(?:\/|$)/, async ctx => {
-//   let filePath = ctx.path.replace(/static\//, "");
-//   await send(ctx, filePath, {
-//     root: path.join(__dirname, "../dist")
-//   });
-// });
+router.get(/^\/static(?:\/|$)/, async ctx => {
+  let filePath = ctx.path.replace(/static\//, "");
+  await send(ctx, filePath, {
+    root: path.join(__dirname, "../dist/static")
+  });
+});
 
 router.get(/^\/(.*)$/, function(ctx, next) {
   ctx.cookies.set("landing", ctx.request.query.landing, {
