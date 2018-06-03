@@ -1,0 +1,7 @@
+build/*.js
+src/assets/*
+webpack.dev.config.js
+webpack.build.config.js
+src/cookie.js
+src/main.js
+src/components/*
