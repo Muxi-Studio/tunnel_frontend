@@ -13,9 +13,7 @@ import Tag from 'element-ui';
 import TableColumn from 'element-ui';
 import Popover from 'element-ui';
 import pagination from 'element-ui';
-// import ElDatePicker from 'element-datepicker'
 
-// Vue.use(ElDatePicker);
 Vue.use(DatePicker);
 Vue.use(Table);
 Vue.use(Form);

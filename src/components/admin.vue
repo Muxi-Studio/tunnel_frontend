@@ -75,19 +75,7 @@
           this.tableData = res.messagelist;
         })
       },
-      handleEdit(index, row) {
-        fetch("/api/sent/" + row.id +"/", {
-          method: 'POST',
-          headers: {
-            "token": this.token,
-            "Content-Type": "application/json"
-          }
-        }).then(res => {
-          if(res.ok) {
-            this.handleCurrentChange(this.page)
-          }
-        })
-      },
+
       filterHandler(time) {
         fetch("/api/admin/pages/" + this.page + "/time/" + time + "/", {
           method: 'GET',
@@ -103,6 +91,21 @@
           this.tableData = res.messagelist;
         })
       },
+      
+      handleEdit(index, row) {
+        fetch("/api/sent/" + row.id +"/", {
+          method: 'POST',
+          headers: {
+            "token": this.token,
+            "Content-Type": "application/json"
+          }
+        }).then(res => {
+          if(res.ok) {
+            this.handleCurrentChange(this.page)
+          }
+        })
+      },
+
       deleteRow(index, row) {
         fetch("/api/admin/message/" + row.id + "/", {
           method: 'DELETE',
